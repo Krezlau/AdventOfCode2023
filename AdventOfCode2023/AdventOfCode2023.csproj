@@ -9,15 +9,16 @@
 
     <ItemGroup>
       <None Remove="input.txt" />
-      <None Update="Data\input1.txt">
+      <None Update="Data\day01\input.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Data\day01\input1.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 
     <ItemGroup>
-      <None Include="Data\input.txt">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
+      <Folder Include="Data\day02\" />
     </ItemGroup>
 
 </Project>
