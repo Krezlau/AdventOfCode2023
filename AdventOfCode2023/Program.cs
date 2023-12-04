@@ -1,6 +1,6 @@
 ﻿
 using AdventOfCode2023;
 
-Day day = new Day03("day03/input.txt");
+Day day = new Day04("day04/input.txt");
 day.ExecutePartOne();
 day.ExecutePartTwo();
