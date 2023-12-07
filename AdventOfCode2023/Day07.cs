@@ -37,7 +37,6 @@ public class Day07 : Day
         Part = 2;
         List<Hand> hands = Data.Select(line => 
             new Hand(line.Split(" ")[0], int.Parse(line.Split(" ")[1]))).ToList();
-        var hands2 = hands.Where(h => h.Cards.Contains('J')).ToArray();
         hands = hands.OrderBy(h => h).ToList();
         foreach (var hand in hands)
         {
@@ -85,13 +84,13 @@ public class Day07 : Day
             int JokerCount = cards.Count(c => c == 'J');
             if (uniqueCardsCount == 1 || (uniqueCardsCount == 2 && JokerCount > 0)) return FIVE_OF_A_KIND;
             if ((uniqueCardsCount == 2 && cards.Count(c => c == uniqueCards[0]) == 4) || 
-                (uniqueCardsCount == 3 && cards.Count(c => c == uniqueCards[0]) + JokerCount == 4)) return FOUR_OF_A_KIND;
+                (uniqueCardsCount == 3 && cards.Count(c => c == uniqueCards[0]) + JokerCount == 4 && JokerCount > 0)) return FOUR_OF_A_KIND;
             if ((uniqueCardsCount == 2 && cards.Count(c => c == uniqueCards[0]) == 3) || 
-                (uniqueCardsCount == 3 && cards.Count(c => c == uniqueCards[0]) + JokerCount == 3)) return FULL_HOUSE;
+                (uniqueCardsCount == 3 && cards.Count(c => c == uniqueCards[0]) + JokerCount == 3 && JokerCount > 0)) return FULL_HOUSE;
             if ((uniqueCardsCount == 3 && cards.Count(c => c == uniqueCards[0]) == 3) ||
-                (uniqueCardsCount == 4 && cards.Count(c => c == uniqueCards[0]) + JokerCount == 3)) return THREE_OF_A_KIND;
+                (uniqueCardsCount == 4 && cards.Count(c => c == uniqueCards[0]) + JokerCount == 3 && JokerCount > 0)) return THREE_OF_A_KIND;
             if ((uniqueCardsCount == 3 && cards.Count(c => c == uniqueCards[0]) == 2) ||
-                (uniqueCardsCount == 4 && cards.Count(c => c == uniqueCards[0]) + JokerCount == 2)) return TWO_PAIR;
+                (uniqueCardsCount == 4 && cards.Count(c => c == uniqueCards[0]) + JokerCount == 2 && JokerCount > 0)) return TWO_PAIR;
             if (uniqueCardsCount == 4 || (uniqueCardsCount == 5 && JokerCount > 0)) return ONE_PAIR;
             return HIGH_CARD;
         }
